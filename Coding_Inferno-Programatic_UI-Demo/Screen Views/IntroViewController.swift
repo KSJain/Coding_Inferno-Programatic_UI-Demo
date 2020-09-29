@@ -7,13 +7,34 @@
 
 import UIKit
 
-class IntroViewController: ViewController {
+
+class IntroViewController: UIViewController {
+
+    let someLabel = UILabel()
     
     override func viewDidLoad() {
-        configureView()
+        super.viewDidLoad()
+        configView()
     }
     
-    private func configureView() {
-        view.backgroundColor = .red
+    private func configView() {
+        view.backgroundColor    = .systemBackground
+        addDemoLabel()
     }
+    
+    private func addDemoLabel() {
+        view.addSubview(someLabel)
+        someLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        someLabel.text          = "Coding Inferno"
+        someLabel.textAlignment = .center
+        
+        NSLayoutConstraint.activate([
+            someLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            someLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            someLabel.heightAnchor.constraint(equalToConstant: 20),
+            someLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5)
+        ])
+    }
+
 }
